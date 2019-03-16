@@ -23,4 +23,9 @@ public class DiskSpaceTest {
         assertTrue(DiskSpace.isWritable(4, 2, new HashSet<>(Arrays.asList(1, 4))));
     }
 
+    @Test
+    public void test9() {
+        assertFalse(DiskSpace.isWritable(10, 3, new HashSet<>(Arrays.asList(3, 6, 9))));
+    }
+
 }

@@ -16,11 +16,11 @@ public class Transactions {
                 final String consumer = String.format("%s%s%s", transaction[0], transaction[1], transaction[2]);
                 int value = Integer.parseInt(transaction[3]);
 
-                // if without block to increase performance due to reduction of stack size
+                //  not using dispensable blocks to reduce stack size and increase performance
                 if (sumByConsumer.containsKey(consumer)) value += sumByConsumer.get(consumer);
-                sumByConsumer.put(consumer, value);
 
                 if (value > creditLimit) rejectedTransactions.add(transaction[4]);
+                else sumByConsumer.put(consumer, value); // only sum if transaction proceeded
             });
         } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
             // more specific cause
